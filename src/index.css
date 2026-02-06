@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-admin: hsl(210, 100%, 20%);
+  --color-instituicao: hsl(124, 100%, 20%);
+  --color-student: hsl(11, 68%, 52%);
+  --font-global:
+    Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #535353;
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: (var(--color-instituicao));
+  }
+}

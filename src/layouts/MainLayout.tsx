@@ -7,6 +7,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { HeaderContext } from "../contexts/HeaderContext";
 import type { User } from "../types/User";
 import Header from "../components_temp/HeaderMenu/Header";
+import Sidebar from "../components_temp/common/Sidebar";
 
 const MainLayout = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -43,9 +44,14 @@ const MainLayout = () => {
   return (
     <AuthContext.Provider value={{ user, setUser, refreshUser, updateUser }}>
       <HeaderContext.Provider value={{ title, setTitle }}>
-        {!shouldHideHeader && user && <Header />}
+        <div className="flex min-h-screen">
+          <Sidebar />
+          <div className="flex-1">
+            {!shouldHideHeader && user && <Header />}
 
-        <Outlet />
+            <Outlet />
+          </div>
+        </div>
       </HeaderContext.Provider>
     </AuthContext.Provider>
   );

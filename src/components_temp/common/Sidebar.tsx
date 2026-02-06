@@ -39,17 +39,21 @@ const Sidebar = ({ side = "left" }: SidebarProps) => {
 
   return (
     <>
-      <button
-        type="button"
-        className={`fixed top-4 z-50 rounded-md border border-zinc-200 bg-white p-2 text-zinc-700 shadow-sm sm:hidden ${
-          isRight ? "right-4" : "left-4"
-        }`}
-        onClick={() => setIsOpen(true)}
-        aria-label="Abrir navegacao"
-      >
-        <Menu className="h-5 w-5" />
-      </button>
+      {/* Hamburger button - only visible on mobile when sidebar is closed */}
+      {!isOpen && (
+        <button
+          type="button"
+          className={`fixed top-4 z-50 rounded-md border border-zinc-200 bg-white p-2 text-zinc-700 shadow-sm sm:hidden ${
+            isRight ? "right-4" : "left-4"
+          }`}
+          onClick={() => setIsOpen(true)}
+          aria-label="Abrir navegacao"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+      )}
 
+      {/* Overlay - only on mobile */}
       {isOpen && (
         <button
           type="button"
@@ -61,17 +65,20 @@ const Sidebar = ({ side = "left" }: SidebarProps) => {
 
       <aside
         className={[
-          "fixed inset-y-0 z-40 w-64 bg-white shadow-lg transition-transform duration-200 ease-out sm:static sm:z-auto sm:w-56 sm:shadow-none",
+          "bg-white shadow-lg sm:relative sm:w-56 sm:shadow-none sm:border-zinc-200",
+          "fixed inset-y-0 z-40 w-64 transition-transform duration-200 ease-out",
           isRight
-            ? "right-0 translate-x-full sm:border-l sm:border-zinc-200"
-            : "left-0 -translate-x-full sm:border-r sm:border-zinc-200",
-          isOpen ? "translate-x-0" : "",
+            ? "right-0 sm:border-l" 
+            : "left-0 sm:border-r",
+          isOpen ? "translate-x-0" : isRight ? "translate-x-full" : "-translate-x-full",
+          "sm:translate-x-0", // Always visible on desktop
         ]
           .filter(Boolean)
           .join(" ")}
       >
         <div className="flex items-center justify-between px-4 py-4 text-sm font-semibold text-zinc-700">
           Navegacao
+          {/* Close button - only visible on mobile */}
           <button
             type="button"
             className="rounded-md p-1 text-zinc-500 hover:bg-zinc-100 sm:hidden"
@@ -88,7 +95,7 @@ const Sidebar = ({ side = "left" }: SidebarProps) => {
               <NavLink
                 key={route.to}
                 to={route.to}
-                onClick={() => setIsOpen(false)}
+                onClick={() => setIsOpen(false)} // Close on mobile when clicking link
                 className={({ isActive }) =>
                   [
                     "flex items-center gap-2 rounded px-3 py-2 text-zinc-700 hover:bg-zinc-100",

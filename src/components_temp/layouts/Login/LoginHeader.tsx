@@ -1,10 +1,12 @@
+import logoPreCampus from "../../../assets/logoPreCampus.png";
+
 const LoginHeader = () => {
   return (
     <div>
       <div className="ml-27 flex justify-start">
         <img
           className="w-45"
-          src="/src/assets/logoPreCampus.png"
+          src={logoPreCampus}
           alt="Logo PreCampus Laranja"
         />
       </div>

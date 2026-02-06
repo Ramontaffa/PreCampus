@@ -10,7 +10,6 @@ import Header from "../components_temp/HeaderMenu/Header";
 
 const MainLayout = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
 
   const location = useLocation();
@@ -25,8 +24,6 @@ const MainLayout = () => {
         setUser(data);
       } catch {
         setUser(null);
-      } finally {
-        setLoading(false);
       }
     };
 

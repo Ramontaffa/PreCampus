@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
 import type { SchoolFormState } from "../../../types/SchoolFormState";
 import { Input } from "../../input";
 import { SchoolYearCountFields } from "../../forms/school/SchoolYearCountFields";

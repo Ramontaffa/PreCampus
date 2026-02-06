@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -24,26 +23,9 @@ function LoginForm() {
     return base;
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    try {
-      if (loginType === "student") {
-        await axios.post("/auth/login/student", {
-          email,
-          password,
-        });
-      } else {
-        await axios.post("/auth/login/institution", {
-          cnpj,
-          password,
-        });
-      }
-
-      navigate("/");
-    } catch {
-      alert("Credenciais inválidas");
-    }
+    navigate("/");
   };
 
   return (

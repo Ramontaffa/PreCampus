@@ -1,14 +1,15 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { RiArrowRightLine, RiCalendarLine, RiCheckLine } from "@remixicon/react";
+import Illustration from "../../../assets/Illustration.svg";
 
 interface CardProps {
   titulo: string;
   data?: string;
   status?: "inscrever" | "inscrito" | "saibaMais";
-  imagem?: string;
+  imagem?: string | StaticImageData;
   link?: string;
 }
 
@@ -42,7 +43,7 @@ export default function Card({
       {link ? (
         <Link href={link} className="group/image relative block h-40 overflow-hidden rounded-xl">
           <Image
-            src={imagem}
+            src={imagem || Illustration}
             alt={titulo}
             className="h-full w-full object-cover transition-transform duration-500 group-hover/image:scale-105"
             fill
@@ -58,7 +59,7 @@ export default function Card({
       ) : (
         <div className="relative h-40 overflow-hidden rounded-xl">
           <Image
-            src={imagem}
+            src={imagem || Illustration}
             alt={titulo}
             className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
             fill

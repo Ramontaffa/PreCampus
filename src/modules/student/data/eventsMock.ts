@@ -1,3 +1,7 @@
+import { StaticImageData } from "next/image";
+import EventBannerImg from "../../../assets/SchoolEventDetails.png";
+import Illustration from "../../../assets/Illustration.svg";
+
 export type StudentEventStatus = "inscrever" | "inscrito" | "saibaMais";
 
 export interface StudentEvent {
@@ -11,7 +15,7 @@ export interface StudentEvent {
   spots: string;
   level: string;
   certificate: string;
-  banner: string;
+  banner: string | StaticImageData;
   description: string;
   agenda: Array<{ time: string; title: string }>;
   universities: Array<{
@@ -37,7 +41,7 @@ export const studentEventsMock: StudentEvent[] = [
     spots: "120 vagas",
     level: "Aberto para todos os cursos",
     certificate: "Certificado de participação (3h)",
-    banner: "/img/palestra1.jpg",
+    banner: EventBannerImg,
     description:
       "Uma imersão sobre tendências em tecnologia, trajetórias profissionais e como se posicionar para estágios e programas de trainee. Inclui Q&A ao vivo e networking entre estudantes e universidades convidadas.",
     agenda: [
@@ -79,7 +83,7 @@ export const studentEventsMock: StudentEvent[] = [
     spots: "60 vagas",
     level: "Para interessados em inovação",
     certificate: "Certificado de participação (3h)",
-    banner: "/img/palestra2.jpg",
+    banner: Illustration,
     description:
       "Construa soluções centradas no usuário com exercícios práticos e feedback de especialistas. Ideal para quem quer fortalecer portfólio e soft skills.",
     agenda: [
@@ -112,7 +116,7 @@ export const studentEventsMock: StudentEvent[] = [
     spots: "200 vagas presenciais",
     level: "Para quem está decidindo curso",
     certificate: "Credencial de participação",
-    banner: "/img/palestra3.jpg",
+    banner: EventBannerImg,
     description:
       "Converse com universidades, descubra cursos e tire dúvidas sobre carreira. Espaços temáticos, talks rápidos e plantão de orientação.",
     agenda: [
@@ -154,7 +158,7 @@ export const studentEventsMock: StudentEvent[] = [
     spots: "150 vagas",
     level: "Foco em tecnologia e infraestrutura",
     certificate: "Certificado de participação (2h)",
-    banner: "/img/palestra5.jpg",
+    banner: Illustration,
     description:
       "Descubra como novas tecnologias estão transformando engenharia civil, elétrica e de software. Inclui cases de projetos e trilhas de estudo sugeridas.",
     agenda: [
@@ -186,7 +190,7 @@ export const studentEventsMock: StudentEvent[] = [
     spots: "90 vagas",
     level: "Indicada para saúde",
     certificate: "Certificado de participação (2h)",
-    banner: "/img/palestra4.jpg",
+    banner: EventBannerImg,
     description:
       "Entenda caminhos de especialização, rotina hospitalar e preparação para provas de residência com médicos convidados e espaço para perguntas.",
     agenda: [

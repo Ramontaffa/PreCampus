@@ -1,10 +1,11 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { RiArrowRightLine } from "@remixicon/react";
+import EventBannerImg from "../../../assets/SchoolEventDetails.png";
 
 interface NextEventProps {
   title: string;
-  img: string;
+  img: string | StaticImageData;
   link?: string;
 }
 
@@ -62,7 +63,7 @@ export default function NextEventBanner({ title, img, link }: NextEventProps) {
 
       <div className="w-full md:w-72">
         <Image
-          src={img}
+          src={img || EventBannerImg}
           alt="Destaque do evento"
           className="h-48 w-full rounded-xl object-cover shadow-sm transition-transform duration-300 hover:scale-[1.02]"
           width={288}

@@ -17,6 +17,7 @@ export interface StudentEvent {
   banner: string | StaticImageData;
   description: string;
   agenda: Array<{ time: string; title: string }>;
+  tags: string[];
   universities: Array<{
     id: string;
     name: string;
@@ -49,6 +50,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "20h10", title: "Networking rápido com universidades" },
       { time: "20h40", title: "Encerramento e próximos passos" },
     ],
+    tags: ["Tecnologia", "Carreira"],
     universities: [
       {
         id: "tech-univ",
@@ -90,6 +92,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "19h00", title: "Prototipagem expressa" },
       { time: "19h45", title: "Apresentações e feedback" },
     ],
+    tags: ["Tecnologia", "Design"],
     universities: [
       {
         id: "design-hub",
@@ -122,6 +125,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "13h00", title: "Mentorias relâmpago" },
       { time: "14h30", title: "Encerramento" },
     ],
+    tags: ["Feiras", "Carreira"],
     universities: [
       {
         id: "saude-mais",
@@ -162,6 +166,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "11h15", title: "Trilhas e cases aplicados" },
       { time: "11h45", title: "Q&A" },
     ],
+    tags: ["Tecnologia", "Engenharia"],
     universities: [
       {
         id: "eng-labs",
@@ -193,6 +198,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "19h15", title: "Preparação para residência" },
       { time: "19h45", title: "Q&A" },
     ],
+    tags: ["Saúde"],
     universities: [
       {
         id: "med-campus",

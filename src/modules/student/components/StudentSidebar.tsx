@@ -7,6 +7,7 @@ import {
 } from "@remixicon/react";
 import Logo from "../../../assets/logo.png"; 
 import SidebarLink from "../../../layout/components/SidebarLink"; 
+import { currentStudentMock } from "../data/usersMock"; 
 
 export default function StudentSidebar() {
   return (
@@ -27,7 +28,7 @@ export default function StudentSidebar() {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
             Painel do Aluno
           </p>
-          <p className="text-sm font-semibold text-slate-800">PreCampus</p>
+          <p className="text-sm font-semibold text-slate-800">{currentStudentMock.name}</p>
         </div>
       </div>
 

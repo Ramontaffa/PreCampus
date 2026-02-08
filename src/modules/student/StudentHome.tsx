@@ -2,59 +2,119 @@ import HomeLayout from "../../layout/HomeLayout";
 import StudentSidebar from "./components/StudentSidebar";
 import NextEventBanner from "./components/NextEventBanner";
 import Card from "./components/Card";
-
-interface Evento {
-  id: number;
-  title: string;
-  status: "inscrever" | "inscrito" | "saibaMais";
-}
-
-const mockEvents: Evento[] = [
-  { id: 1, title: "Palestra de Tecnologia", status: "inscrever" },
-  { id: 2, title: "Workshop de Design", status: "inscrito" },
-  { id: 3, title: "Feira de Profissões", status: "inscrever" },
-];
+import { RiArrowRightLine, RiBookletLine, RiCalendarEventLine, RiCompass3Line } from "@remixicon/react";
+import { studentEventsMock } from "./data/eventsMock";
 
 export default function StudentHome() {
+  const spotlightEvents = studentEventsMock.slice(0, 3);
+
   return (
     <HomeLayout sidebar={<StudentSidebar />}>
-      
-      <div className="mb-8 animate-fade-in-down">
-        <h2 className="text-3xl font-bold text-orange-500 tracking-tight">
-          Bem-vindo, Aluno(a)!
-        </h2>
-        <p className="text-gray-500 mt-1 text-lg">
-          Confira o que está rolando na sua universidade.
-        </p>
-      </div>
+      <section className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm lg:col-span-2">
+          <div className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-orange-600">
+            Jornada do aluno
+          </div>
+          <h2 className="mt-3 text-3xl font-bold leading-tight text-slate-900">
+            Bem-vindo! Pronto para o próximo evento?
+          </h2>
+          <p className="mt-2 max-w-2xl text-base text-slate-600">
+            Explore oportunidades selecionadas, acompanhe inscrições e mantenha seu perfil atualizado para receber recomendações mais precisas.
+          </p>
 
-      <NextEventBanner 
-        title="Palestra sobre o curso X" 
-        img="/img/evento.jpg" 
-      />
+          <div className="mt-6 flex flex-wrap gap-3">
+            <button className="group inline-flex items-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+              Explorar eventos
+              <RiArrowRightLine size={18} className="transition-transform group-hover:translate-x-0.5" />
+            </button>
+            <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+              Continuar de onde parei
+            </button>
+          </div>
 
-      <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-        <div className="flex justify-between items-center mb-6">
-          <h3 className="text-xl font-bold text-blue-600 flex items-center gap-2">
-            Outros Eventos
-            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-          </h3>
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {[{
+              label: "Eventos ativos",
+              value: "12",
+              icon: <RiCalendarEventLine size={20} className="text-orange-500" />,
+            }, {
+              label: "Recomendações",
+              value: "5",
+              icon: <RiCompass3Line size={20} className="text-orange-500" />,
+            }, {
+              label: "Certificados",
+              value: "3",
+              icon: <RiBookletLine size={20} className="text-orange-500" />,
+            }].map((item) => (
+              <div
+                key={item.label}
+                className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50">
+                  {item.icon}
+                </span>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">{item.label}</p>
+                  <p className="text-xl font-bold text-slate-900">{item.value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {mockEvents.map((event) => (
-             <div key={event.id} className="h-full">
-                <Card 
-                  titulo={event.title} 
-                  status={event.status} 
-                 />
-             </div>
+        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-orange-50 p-6 shadow-sm">
+          <p className="text-sm font-semibold text-slate-500">Atualizações rápidas</p>
+          <ul className="mt-4 space-y-3 text-sm text-slate-700">
+            <li className="flex items-center gap-3 rounded-lg border border-slate-100 bg-white px-3 py-2 shadow-[0_1px_0_rgba(15,23,42,0.04)]">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+              3 novos workshops adicionados esta semana.
+            </li>
+            <li className="flex items-center gap-3 rounded-lg border border-slate-100 bg-white px-3 py-2 shadow-[0_1px_0_rgba(15,23,42,0.04)]">
+              <span className="h-2 w-2 rounded-full bg-orange-500" aria-hidden />
+              Lembrete: atualize suas áreas de interesse para melhores sugestões.
+            </li>
+            <li className="flex items-center gap-3 rounded-lg border border-slate-100 bg-white px-3 py-2 shadow-[0_1px_0_rgba(15,23,42,0.04)]">
+              <span className="h-2 w-2 rounded-full bg-sky-500" aria-hidden />
+              Seus certificados recentes estão prontos para download.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <NextEventBanner
+        title={studentEventsMock[0].title}
+        img={studentEventsMock[0].banner}
+      />
+
+      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <h3 className="text-xl font-bold text-slate-900">Outros eventos</h3>
+            <span className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" aria-hidden />
+          </div>
+          <div className="flex flex-wrap gap-2 text-sm">
+            <span className="rounded-full border border-slate-200 px-3 py-1 text-slate-600">Workshops</span>
+            <span className="rounded-full border border-slate-200 px-3 py-1 text-slate-600">Palestras</span>
+            <span className="rounded-full border border-slate-200 px-3 py-1 text-slate-600">Feiras</span>
+          </div>
+        </div>
+
+        <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {spotlightEvents.map((event) => (
+            <Card
+              key={event.id}
+              titulo={event.title}
+              status={event.status}
+              data={`${event.date} - ${event.time}`}
+              imagem={event.banner}
+              link={`/estudante/meus-eventos/detalhes/${event.id}`}
+            />
           ))}
         </div>
 
         <div className="flex justify-center">
-          <button className="border-2 border-orange-500 text-blue-600 font-bold px-10 py-2.5 rounded-full hover:bg-orange-500 hover:text-white transition-all duration-300 uppercase text-sm tracking-wide cursor-pointer active:scale-95">
-            Veja Mais
+          <button className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-6 py-2.5 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+            Ver todos os eventos
           </button>
         </div>
       </section>

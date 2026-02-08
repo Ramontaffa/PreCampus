@@ -2,106 +2,115 @@ import HomeLayout from "../../../layout/HomeLayout";
 import StudentSidebar from "../components/StudentSidebar";
 
 export default function StudentProfile() {
-  const inputClass = "w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all text-gray-700 placeholder-gray-400";
-  const labelClass = "block text-sm font-bold text-gray-600 mb-1 ml-1";
+  const inputClass = "w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-800 placeholder-slate-400 shadow-inner transition-all focus-visible:border-orange-400 focus-visible:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500";
+  const labelClass = "block text-sm font-semibold text-slate-700";
 
   return (
     <HomeLayout sidebar={<StudentSidebar />}>
-      
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-orange-500 mb-6 pl-2">Meu Perfil</h2>
 
-        <div className="bg-white rounded-3xl border-2 border-orange-500 shadow-lg p-8">
-          
-          {/* Seção Aluno */}
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold text-blue-900 border-b pb-2 mb-6 flex items-center gap-2">
-              Dados do Aluno(a)
-            </h2>
+      <div className="mx-auto flex max-w-5xl flex-col gap-6">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-sm font-semibold text-orange-600">Perfil do aluno</p>
+              <h2 className="text-3xl font-bold leading-tight text-slate-900">Meu perfil</h2>
+              <p className="text-base text-slate-600">Mantenha seus dados atualizados para receber recomendações aderentes aos seus interesses.</p>
+            </div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700">
+              Dados salvos automaticamente
+            </span>
+          </div>
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className={labelClass}>Nome Completo</label>
+        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+          <div className="mb-10 space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-bold text-slate-900">Dados do aluno(a)</h3>
+              <span className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Obrigatório</span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div className="space-y-2">
+                <label className={labelClass}>Nome completo</label>
                 <input className={inputClass} placeholder="Ex: João da Silva" />
               </div>
-              <div>
+              <div className="space-y-2">
                 <label className={labelClass}>Email</label>
                 <input className={inputClass} placeholder="Ex: joao@email.com" />
               </div>
-              <div>
-                <label className={labelClass}>Data de Nascimento</label>
+              <div className="space-y-2">
+                <label className={labelClass}>Data de nascimento</label>
                 <input className={inputClass} type="date" />
               </div>
-              <div>
+              <div className="space-y-2">
                 <label className={labelClass}>Telefone</label>
                 <input className={inputClass} placeholder="(00) 00000-0000" />
               </div>
-              <div className="md:col-span-2">
-                <label className={labelClass}>Universidades de Interesse</label>
+              <div className="space-y-2 md:col-span-2">
+                <label className={labelClass}>Universidades de interesse</label>
                 <input className={inputClass} placeholder="Separe por vírgulas..." />
               </div>
-              <div className="md:col-span-2">
-                <label className={labelClass}>Cursos de Interesse</label>
+              <div className="space-y-2 md:col-span-2">
+                <label className={labelClass}>Cursos de interesse</label>
                 <input className={inputClass} placeholder="Separe por vírgulas..." />
               </div>
             </div>
           </div>
 
-          {/* Seção Responsável */}
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold text-blue-900 border-b pb-2 mb-6 flex items-center gap-2">
-              Dados do Responsável
-            </h2>
+          <div className="space-y-6 border-t border-slate-100 pt-8">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-bold text-slate-900">Dados do responsável</h3>
+              <span className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Opcional</span>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
-                <label className={labelClass}>Nome Completo</label>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div className="space-y-2 md:col-span-2">
+                <label className={labelClass}>Nome completo</label>
                 <input className={inputClass} placeholder="Nome do responsável" />
               </div>
-              <div>
+              <div className="space-y-2">
                 <label className={labelClass}>Email</label>
                 <input className={inputClass} placeholder="email@responsavel.com" />
               </div>
-              <div>
+              <div className="space-y-2">
                 <label className={labelClass}>Parentesco</label>
                 <input className={inputClass} placeholder="Ex: Pai, Mãe, Avó..." />
               </div>
-              <div>
+              <div className="space-y-2">
                 <label className={labelClass}>CPF</label>
                 <input className={inputClass} placeholder="000.000.000-00" />
               </div>
-              <div>
-                <label className={labelClass}>Renda Familiar Aprox.</label>
+              <div className="space-y-2">
+                <label className={labelClass}>Renda familiar aprox.</label>
                 <input className={inputClass} placeholder="R$ 0,00" />
               </div>
-              <div className="md:col-span-2">
-                <label className={labelClass}>Endereço Completo</label>
+              <div className="space-y-2 md:col-span-2">
+                <label className={labelClass}>Endereço completo</label>
                 <input className={inputClass} placeholder="Rua, Número, Bairro, Cidade..." />
               </div>
-              
-              <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 mt-2 pt-4 border-t border-gray-100">
-                <div>
-                   <label className={labelClass}>Nova Senha</label>
-                   <input className={inputClass} type="password" placeholder="********" />
-                </div>
-                <div>
-                   <label className={labelClass}>Confirmar Senha</label>
-                   <input className={inputClass} type="password" placeholder="********" />
-                </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 rounded-2xl bg-slate-50 p-6 md:grid-cols-2">
+              <div className="space-y-2">
+                <label className={labelClass}>Nova senha</label>
+                <input className={inputClass} type="password" placeholder="********" />
               </div>
+              <div className="space-y-2">
+                <label className={labelClass}>Confirmar senha</label>
+                <input className={inputClass} type="password" placeholder="********" />
+              </div>
+              <p className="md:col-span-2 text-sm text-slate-500">Use uma senha com pelo menos 8 caracteres, combinando letras, números e símbolos.</p>
             </div>
           </div>
 
-          {/* Botões */}
-          <div className="flex flex-col md:flex-row gap-4 justify-center mt-8">
-            <button className="bg-blue-600 text-white font-bold px-8 py-3 rounded-full hover:bg-blue-700 transition-all active:scale-95 shadow-md cursor-pointer">
-              Editar Perfil
+          <div className="mt-10 flex flex-col justify-end gap-3 border-t border-slate-100 pt-6 sm:flex-row">
+            <button className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+              Editar perfil
             </button>
-            <button className="bg-green-500 text-white font-bold px-8 py-3 rounded-full hover:bg-green-600 transition-all active:scale-95 shadow-md cursor-pointer">
-              Salvar Alterações
+            <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+              Salvar alterações
             </button>
           </div>
-
         </div>
       </div>
     </HomeLayout>

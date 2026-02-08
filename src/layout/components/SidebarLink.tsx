@@ -25,10 +25,10 @@ export default function SidebarLink({
   return (
     <Link
       href={to}
-      className={`flex items-center gap-3 px-6 py-4 font-bold uppercase text-sm transition-all duration-200 ${
+      className={`group flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold tracking-tight transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 ${
         isActive
-          ? `${activeBg} text-white rounded-r-full shadow-md`
-          : `${textColor} hover:bg-gray-100 rounded-r-full`
+          ? `${activeBg} text-white shadow-sm ring-1 ring-slate-200/60`
+          : `${textColor} hover:bg-slate-100`
       }`}
     >
       {icon}

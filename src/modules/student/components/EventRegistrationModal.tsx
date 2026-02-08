@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import {
   RiCalendarEventLine,
   RiCloseLine,
@@ -10,6 +10,7 @@ import {
   RiCheckboxCircleLine,
   RiLoader4Line,
 } from "@remixicon/react";
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface EventRegistrationModalProps {
   open: boolean;
@@ -38,9 +39,7 @@ export default function EventRegistrationModal({
   const [success, setSuccess] = useState(false);
   const [interests, setInterests] = useState<string[]>([]);
 
-  if (!open) return null;
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (universityOptions.length && interests.length === 0) {
       alert("Selecione ao menos uma universidade de interesse.");
@@ -58,38 +57,45 @@ export default function EventRegistrationModal({
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/60 px-4 backdrop-blur-sm">
-      <div
-        role="dialog"
-        aria-modal="true"
-        className="w-full max-w-xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
-      >
-        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
-          <div>
+    <Dialog
+      open={open}
+      onOpenChange={(state) => {
+        if (!state) {
+          setSuccess(false);
+          setLoading(false);
+          onClose();
+        }
+      }}
+    >
+      <DialogContent className="p-0">
+        <div className="max-h-[90vh] overflow-y-auto p-1 scrollbar-hidden">
+        <DialogHeader className="flex flex-row items-start justify-between gap-3 border-b border-slate-100 px-5 py-4">
+          <div className="text-left">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-orange-600">Inscrição no evento</p>
-            <h3 className="text-lg font-bold text-slate-900">{eventTitle}</h3>
+            <DialogTitle className="text-lg font-bold text-slate-900">{eventTitle}</DialogTitle>
           </div>
-          <button
-            className="rounded-full p-2 text-slate-500 transition hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
-            onClick={onClose}
-            aria-label="Fechar"
-          >
-            <RiCloseLine size={20} />
-          </button>
-        </div>
+          <DialogClose asChild>
+            <button
+              className="rounded-full p-2 text-slate-500 transition hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+              aria-label="Fechar"
+            >
+              <RiCloseLine size={20} />
+            </button>
+          </DialogClose>
+        </DialogHeader>
 
-        <div className="grid grid-cols-1 gap-4 border-b border-slate-100 bg-slate-50/80 px-5 py-4 text-sm font-semibold text-slate-700 sm:grid-cols-3">
-          <div className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 shadow-sm">
+        <div className="grid grid-cols-1 gap-3 border-b border-slate-100 bg-slate-50/80 px-5 py-4 text-sm font-semibold text-slate-700 sm:grid-cols-3">
+          <div className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-center shadow-sm">
             <RiCalendarEventLine size={18} className="text-orange-500" />
             {dateTime}
           </div>
-          <div className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-center shadow-sm">
             <RiCheckboxCircleLine size={18} className="text-orange-500" />
             Inscrição gratuita
           </div>
-          <div className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-emerald-500" />
-            {mode}
+          <div className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-3 py-2 text-center shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+            <span>{mode}</span>
           </div>
         </div>
 
@@ -102,12 +108,11 @@ export default function EventRegistrationModal({
               </div>
               <p>Você receberá o link e os lembretes por e-mail próximo à data do evento.</p>
               <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={onClose}
-                  className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
-                >
-                  Fechar
-                </button>
+                <DialogClose asChild>
+                  <button className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600">
+                    Fechar
+                  </button>
+                </DialogClose>
                 <button
                   onClick={() => setSuccess(false)}
                   className="inline-flex items-center justify-center rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
@@ -235,14 +240,15 @@ export default function EventRegistrationModal({
                 <p>Autorizo receber comunicações sobre este evento e materiais relacionados.</p>
               </div>
 
-              <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
-                >
-                  Cancelar
-                </button>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <button
+                    type="button"
+                    className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+                  >
+                    Cancelar
+                  </button>
+                </DialogClose>
                 <button
                   type="submit"
                   disabled={loading}
@@ -257,11 +263,12 @@ export default function EventRegistrationModal({
                     "Confirmar inscrição"
                   )}
                 </button>
-              </div>
+              </DialogFooter>
             </form>
           )}
         </div>
-      </div>
-    </div>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }

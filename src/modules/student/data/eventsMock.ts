@@ -14,6 +14,15 @@ export interface StudentEvent {
   banner: string;
   description: string;
   agenda: Array<{ time: string; title: string }>;
+  universities: Array<{
+    id: string;
+    name: string;
+    booth: string;
+    summary: string;
+    courses: string[];
+    brings: string[];
+    contact: string;
+  }>;
 }
 
 export const studentEventsMock: StudentEvent[] = [
@@ -23,8 +32,8 @@ export const studentEventsMock: StudentEvent[] = [
     status: "inscrever",
     date: "21 mar 2026",
     time: "18h - 21h",
-    mode: "On-line ao vivo",
-    location: "Plataforma PreCampus (link após inscrição)",
+    mode: "Presencial",
+    location: "Auditório Central - Campus Vila Nova",
     spots: "120 vagas",
     level: "Aberto para todos os cursos",
     certificate: "Certificado de participação (3h)",
@@ -37,6 +46,26 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "19h10", title: "Workshop: Portfólio e projetos para estágio" },
       { time: "20h10", title: "Networking rápido com universidades" },
       { time: "20h40", title: "Encerramento e próximos passos" },
+    ],
+    universities: [
+      {
+        id: "tech-univ",
+        name: "Tech University",
+        booth: "B12",
+        summary: "Foco em computação, IA e dados.",
+        courses: ["Ciência da Computação", "Engenharia de Software", "Sistemas de Informação"],
+        brings: ["Professores para Q&A", "Catálogo de bolsas para tecnologia", "Mini mentoria sobre portfólio"],
+        contact: "contato@techuniv.edu",
+      },
+      {
+        id: "inova-campus",
+        name: "Inova Campus",
+        booth: "B08",
+        summary: "Cursos híbridos e laboratórios maker.",
+        courses: ["Design de Produto", "Engenharia de Produção", "Arquitetura"],
+        brings: ["Demonstração de projetos de alunos", "Bolsas parciais para workshops", "Tour virtual dos labs"],
+        contact: "relacionamento@inovact.br",
+      },
     ],
   },
   {
@@ -60,6 +89,17 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "19h00", title: "Prototipagem expressa" },
       { time: "19h45", title: "Apresentações e feedback" },
     ],
+    universities: [
+      {
+        id: "design-hub",
+        name: "Design Hub University",
+        booth: "C03",
+        summary: "Escola referência em UX e Service Design.",
+        courses: ["Design", "UX/UI", "Service Design"],
+        brings: ["Avaliação rápida de portfolio", "Vagas de monitoria em estúdio", "Calendário de bootcamps"],
+        contact: "ux@designhub.edu",
+      },
+    ],
   },
   {
     id: "feira-profissoes",
@@ -67,8 +107,8 @@ export const studentEventsMock: StudentEvent[] = [
     status: "saibaMais",
     date: "26 mar 2026",
     time: "09h - 15h",
-    mode: "Híbrido",
-    location: "Centro de Convenções + Streaming",
+    mode: "Presencial",
+    location: "Centro de Convenções",
     spots: "200 vagas presenciais",
     level: "Para quem está decidindo curso",
     certificate: "Credencial de participação",
@@ -82,6 +122,26 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "13h00", title: "Mentorias relâmpago" },
       { time: "14h30", title: "Encerramento" },
     ],
+    universities: [
+      {
+        id: "saude-mais",
+        name: "Saude Mais Universidade",
+        booth: "P05",
+        summary: "Faculdade especializada em saúde e bem-estar.",
+        courses: ["Enfermagem", "Fisioterapia", "Nutrição"],
+        brings: ["Simulação de ambulatório", "Programas de bolsas para enfermagem", "Plantão de dúvidas sobre residência"],
+        contact: "relacionamento@saudemais.edu",
+      },
+      {
+        id: "politech",
+        name: "PoliTech",
+        booth: "P07",
+        summary: "Engenharias com ênfase em inovação.",
+        courses: ["Engenharia Civil", "Engenharia Mecatrônica", "Engenharia Elétrica"],
+        brings: ["Demonstração de robótica", "Editais de iniciação científica", "Mentoria sobre vestibular"],
+        contact: "contato@politech.edu",
+      },
+    ],
   },
   {
     id: "engenharia-futuro",
@@ -89,8 +149,8 @@ export const studentEventsMock: StudentEvent[] = [
     status: "saibaMais",
     date: "30 mar 2026",
     time: "10h - 12h",
-    mode: "On-line",
-    location: "Sala virtual (link após inscrição)",
+    mode: "Presencial",
+    location: "Auditório Principal - Torre Norte",
     spots: "150 vagas",
     level: "Foco em tecnologia e infraestrutura",
     certificate: "Certificado de participação (2h)",
@@ -103,6 +163,17 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "11h15", title: "Trilhas e certificados" },
       { time: "11h45", title: "Q&A" },
     ],
+    universities: [
+      {
+        id: "eng-labs",
+        name: "Engineering Labs University",
+        booth: "H02",
+        summary: "Infraestrutura de labs e convênios internacionais.",
+        courses: ["Engenharia de Materiais", "Engenharia de Software", "Engenharia de Energia"],
+        brings: ["Mostruário de projetos de campo", "Programas de dupla diplomação", "Calendário de visitas técnicas"],
+        contact: "admissions@englabs.edu",
+      },
+    ],
   },
   {
     id: "medicina-carreira",
@@ -110,8 +181,8 @@ export const studentEventsMock: StudentEvent[] = [
     status: "saibaMais",
     date: "27 mar 2026",
     time: "18h - 20h",
-    mode: "On-line",
-    location: "Sala virtual (link após inscrição)",
+    mode: "Presencial",
+    location: "Centro Clínico Universitário - Sala 3",
     spots: "90 vagas",
     level: "Indicada para saúde",
     certificate: "Certificado de participação (2h)",
@@ -123,6 +194,17 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "18h30", title: "Especializações e rotinas" },
       { time: "19h15", title: "Preparação para residência" },
       { time: "19h45", title: "Q&A" },
+    ],
+    universities: [
+      {
+        id: "med-campus",
+        name: "Med Campus",
+        booth: "S01",
+        summary: "Escola de medicina com residência própria.",
+        courses: ["Medicina", "Biomedicina", "Enfermagem"],
+        brings: ["Plantão de orientação de residência", "Programas de bolsas parciais", "Apresentação de simuladores"],
+        contact: "medicina@medcampus.edu",
+      },
     ],
   },
 ];

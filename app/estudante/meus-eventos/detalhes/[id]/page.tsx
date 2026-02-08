@@ -9,17 +9,19 @@ import {
   RiVideoLine,
   RiTeamLine,
   RiAwardLine,
-  RiArrowRightLine,
   RiShieldCheckLine,
 } from "@remixicon/react";
 import { getStudentEventById, studentEventsMock } from "@/modules/student/data/eventsMock";
+import EventRegistrationActions from "@/modules/student/components/EventRegistrationActions";
+import EventUniversitiesPanel from "@/modules/student/components/EventUniversitiesPanel";
 
-interface PageProps {
-  params: { id: string };
+interface PageParams {
+  id: string;
 }
 
-export default function StudentEventDetailsPage({ params }: PageProps) {
-  const event = getStudentEventById(params.id);
+export default async function StudentEventDetailsPage({ params }: { params: Promise<PageParams> }) {
+  const { id } = await params;
+  const event = getStudentEventById(id);
 
   if (!event) {
     return notFound();
@@ -157,37 +159,20 @@ export default function StudentEventDetailsPage({ params }: PageProps) {
               </div>
             </div>
           </div>
+
+          <EventUniversitiesPanel universities={event.universities} mode={event.mode} />
         </section>
 
-        <aside className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-              Vagas disponíveis: {event.spots}
-            </div>
-            <h3 className="text-xl font-bold text-slate-900">Garanta sua vaga</h3>
-            <p className="text-sm text-slate-600">
-              Faça sua inscrição para receber o link de acesso e lembretes antes do evento.
-            </p>
-            <div className="flex flex-col gap-2">
-              <button className="group inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
-                {event.status === "inscrito" ? "Inscrito" : "Inscrever-se"}
-                <RiArrowRightLine size={18} className="transition-transform group-hover:translate-x-0.5" />
-              </button>
-              <button className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
-                Adicionar ao calendário
-              </button>
-              <button className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
-                Compartilhar evento
-              </button>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-4">
-            <p className="text-sm font-semibold text-slate-800">Dica</p>
-            <p className="mt-1 text-sm text-slate-600">
-              Mantenha seu perfil atualizado para receber recomendações de eventos alinhados aos seus interesses.
-            </p>
-          </div>
+        <aside className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm self-start lg:sticky lg:top-6">
+          <EventRegistrationActions
+            eventId={event.id}
+            eventTitle={event.title}
+            dateTime={`${event.date} - ${event.time}`}
+            mode={event.mode}
+            spots={event.spots}
+            location={event.location}
+            universityOptions={event.universities.map((u) => ({ id: u.id, name: u.name }))}
+          />
         </aside>
        </div>
      </HomeLayout>

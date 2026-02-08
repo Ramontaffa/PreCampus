@@ -1,12 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import { RiArrowRightLine } from "@remixicon/react";
 
 interface NextEventProps {
   title: string;
   img: string;
+  link?: string;
 }
 
-export default function NextEventBanner({ title, img }: NextEventProps) {
+export default function NextEventBanner({ title, img, link }: NextEventProps) {
   return (
     <section className="mb-8 flex flex-col items-start gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md md:flex-row md:items-center">
       <div className="flex-1 space-y-4">
@@ -25,13 +27,33 @@ export default function NextEventBanner({ title, img }: NextEventProps) {
         </div>
 
         <div className="flex flex-wrap gap-3">
-          <button className="group inline-flex items-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
-            Garantir vaga
-            <RiArrowRightLine size={18} className="transition-transform group-hover:translate-x-0.5" />
-          </button>
-          <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-orange-600 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
-            Ver detalhes
-          </button>
+          {link ? (
+            <Link
+              href={link}
+              className="group inline-flex items-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            >
+              Garantir vaga
+              <RiArrowRightLine size={18} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          ) : (
+            <button className="group inline-flex items-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+              Garantir vaga
+              <RiArrowRightLine size={18} className="transition-transform group-hover:translate-x-0.5" />
+            </button>
+          )}
+
+          {link ? (
+            <Link
+              href={link}
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-orange-600 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            >
+              Ver detalhes
+            </Link>
+          ) : (
+            <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-orange-600 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+              Ver detalhes
+            </button>
+          )}
           <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2 text-xs font-semibold text-slate-700">
             Vagas limitadas
           </span>

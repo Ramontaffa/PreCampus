@@ -1,3 +1,5 @@
+"use client";
+
 import HomeLayout from "../../../layout/HomeLayout";
 import StudentSidebar from "../components/StudentSidebar";
 import Card from "../components/Card";
@@ -13,11 +15,19 @@ export default function Events() {
           <p className="mt-1 text-base text-slate-600">Inscreva-se em palestras e workshops selecionados para você.</p>
         </div>
         <div className="flex items-center gap-2 text-sm font-semibold">
-          <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+          <button
+            type="button"
+            onClick={() => alert("Mock filtros: abra painel de filtros.")}
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+          >
             <RiFilter3Line size={18} />
             Filtros
           </button>
-          <button className="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-4 py-2 text-white shadow-sm transition-colors duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+          <button
+            type="button"
+            onClick={() => alert("Mock recomendações: aplicar ranking recomendado.")}
+            className="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-4 py-2 text-white shadow-sm transition-colors duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+          >
             <RiSparkling2Line size={18} />
             Recomendações
           </button>

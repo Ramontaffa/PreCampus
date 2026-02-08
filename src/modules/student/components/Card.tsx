@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { RiArrowRightLine, RiCalendarLine, RiCheckLine } from "@remixicon/react";
@@ -89,12 +91,24 @@ export default function Card({
 
         <div className="mt-auto">
           {status === "inscrever" && (
-            <button
-              className={`group flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold shadow-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${statusTone.button}`}
-            >
-              Inscreva-se
-              <RiArrowRightLine size={18} className="transition-transform group-hover:translate-x-0.5" />
-            </button>
+            link ? (
+              <Link
+                href={link}
+                className={`group flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold shadow-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${statusTone.button}`}
+              >
+                Inscreva-se
+                <RiArrowRightLine size={18} className="transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            ) : (
+              <button
+                type="button"
+                onClick={() => alert("Inscrição mock: acione o fluxo de detalhes ou API real.")}
+                className={`group flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold shadow-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${statusTone.button}`}
+              >
+                Inscreva-se
+                <RiArrowRightLine size={18} className="transition-transform group-hover:translate-x-0.5" />
+              </button>
+            )
           )}
 
           {status === "inscrito" && (

@@ -4,9 +4,11 @@ import NextEventBanner from "./components/NextEventBanner";
 import Card from "./components/Card";
 import { RiArrowRightLine, RiBookletLine, RiCalendarEventLine, RiCompass3Line } from "@remixicon/react";
 import { studentEventsMock } from "./data/eventsMock";
+import Link from "next/link";
 
 export default function StudentHome() {
   const spotlightEvents = studentEventsMock.slice(0, 3);
+  const primaryEventLink = `/estudante/meus-eventos/detalhes/${studentEventsMock[0].id}`;
 
   return (
     <HomeLayout sidebar={<StudentSidebar />}>
@@ -23,13 +25,19 @@ export default function StudentHome() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <button className="group inline-flex items-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+            <Link
+              href="/estudante/meus-eventos"
+              className="group inline-flex items-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            >
               Explorar eventos
               <RiArrowRightLine size={18} className="transition-transform group-hover:translate-x-0.5" />
-            </button>
-            <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+            </Link>
+            <Link
+              href={primaryEventLink}
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            >
               Continuar de onde parei
-            </button>
+            </Link>
           </div>
 
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -84,6 +92,7 @@ export default function StudentHome() {
       <NextEventBanner
         title={studentEventsMock[0].title}
         img={studentEventsMock[0].banner}
+        link={primaryEventLink}
       />
 
       <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -113,9 +122,12 @@ export default function StudentHome() {
         </div>
 
         <div className="flex justify-center">
-          <button className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-6 py-2.5 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+          <Link
+            href="/estudante/meus-eventos"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-6 py-2.5 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+          >
             Ver todos os eventos
-          </button>
+          </Link>
         </div>
       </section>
 

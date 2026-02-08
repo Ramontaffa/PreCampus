@@ -1,3 +1,5 @@
+"use client";
+
 import HomeLayout from "../../../layout/HomeLayout";
 import StudentSidebar from "../components/StudentSidebar";
 
@@ -104,10 +106,18 @@ export default function StudentProfile() {
           </div>
 
           <div className="mt-10 flex flex-col justify-end gap-3 border-t border-slate-100 pt-6 sm:flex-row">
-            <button className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+            <button
+              type="button"
+              onClick={() => alert("Mock: modo edição ativado.")}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-orange-300 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            >
               Editar perfil
             </button>
-            <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+            <button
+              type="button"
+              onClick={() => alert("Mock: alterações salvas.")}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            >
               Salvar alterações
             </button>
           </div>

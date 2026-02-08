@@ -3,6 +3,7 @@ import EventBannerImg from "../../../assets/SchoolEventDetails.png";
 import Illustration from "../../../assets/Illustration.svg";
 
 export type StudentEventStatus = "inscrever" | "inscrito" | "saibaMais";
+export type StudentEventCategory = "Workshops" | "Palestras" | "Feiras";
 
 export interface StudentEvent {
   id: string;
@@ -18,6 +19,7 @@ export interface StudentEvent {
   description: string;
   agenda: Array<{ time: string; title: string }>;
   tags: string[];
+  category: StudentEventCategory;
   universities: Array<{
     id: string;
     name: string;
@@ -51,6 +53,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "20h40", title: "Encerramento e próximos passos" },
     ],
     tags: ["Tecnologia", "Carreira"],
+    category: "Palestras",
     universities: [
       {
         id: "tech-univ",
@@ -93,6 +96,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "19h45", title: "Apresentações e feedback" },
     ],
     tags: ["Tecnologia", "Design"],
+    category: "Workshops",
     universities: [
       {
         id: "design-hub",
@@ -126,6 +130,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "14h30", title: "Encerramento" },
     ],
     tags: ["Feiras", "Carreira"],
+    category: "Feiras",
     universities: [
       {
         id: "saude-mais",
@@ -167,6 +172,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "11h45", title: "Q&A" },
     ],
     tags: ["Tecnologia", "Engenharia"],
+    category: "Palestras",
     universities: [
       {
         id: "eng-labs",
@@ -199,6 +205,7 @@ export const studentEventsMock: StudentEvent[] = [
       { time: "19h45", title: "Q&A" },
     ],
     tags: ["Saúde"],
+    category: "Palestras",
     universities: [
       {
         id: "med-campus",

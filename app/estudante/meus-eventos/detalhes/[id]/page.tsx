@@ -48,16 +48,6 @@ export default async function StudentEventDetailsPage({ params }: { params: Prom
               {event.title}
             </h1>
             <p className="max-w-3xl text-base text-slate-600">{event.description}</p>
-            <div className="flex flex-wrap gap-2 text-sm font-semibold text-slate-600">
-              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1">
-                <RiAwardLine size={18} className="text-orange-500" />
-                {event.certificate}
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1">
-                <RiShieldCheckLine size={18} className="text-orange-500" />
-                {event.level}
-              </span>
-            </div>
           </div>
 
           <div className="mt-6 overflow-hidden rounded-xl border border-slate-100 bg-slate-50/60">
@@ -152,7 +142,6 @@ export default async function StudentEventDetailsPage({ params }: { params: Prom
                   Benefícios
                 </div>
                 <ul className="list-disc space-y-1 pl-4 text-sm text-slate-600">
-                  <li>{event.certificate}</li>
                   <li>Materiais e checklists exclusivos.</li>
                   <li>Networking com recrutadores e representantes de universidades.</li>
                 </ul>

@@ -2,7 +2,7 @@ import HomeLayout from "../../layout/HomeLayout";
 import StudentSidebar from "./components/StudentSidebar";
 import NextEventBanner from "./components/NextEventBanner";
 import Card from "./components/Card";
-import { RiArrowRightLine, RiBookletLine, RiCalendarEventLine, RiCompass3Line } from "@remixicon/react";
+import { RiArrowRightLine, RiCalendarEventLine, RiCompass3Line } from "@remixicon/react";
 import { studentEventsMock } from "./data/eventsMock";
 import Link from "next/link";
 
@@ -49,10 +49,6 @@ export default function StudentHome() {
               label: "Recomendações",
               value: "5",
               icon: <RiCompass3Line size={20} className="text-orange-500" />,
-            }, {
-              label: "Certificados",
-              value: "3",
-              icon: <RiBookletLine size={20} className="text-orange-500" />,
             }].map((item) => (
               <div
                 key={item.label}
@@ -80,10 +76,6 @@ export default function StudentHome() {
             <li className="flex items-center gap-3 rounded-lg border border-slate-100 bg-white px-3 py-2 shadow-[0_1px_0_rgba(15,23,42,0.04)]">
               <span className="h-2 w-2 rounded-full bg-orange-500" aria-hidden />
               Lembrete: atualize suas áreas de interesse para melhores sugestões.
-            </li>
-            <li className="flex items-center gap-3 rounded-lg border border-slate-100 bg-white px-3 py-2 shadow-[0_1px_0_rgba(15,23,42,0.04)]">
-              <span className="h-2 w-2 rounded-full bg-sky-500" aria-hidden />
-              Seus certificados recentes estão prontos para download.
             </li>
           </ul>
         </div>

@@ -14,7 +14,6 @@ export interface StudentEvent {
   location: string;
   spots: string;
   level: string;
-  certificate: string;
   banner: string | StaticImageData;
   description: string;
   agenda: Array<{ time: string; title: string }>;
@@ -40,7 +39,6 @@ export const studentEventsMock: StudentEvent[] = [
     location: "Auditório Central - Campus Vila Nova",
     spots: "120 vagas",
     level: "Aberto para todos os cursos",
-    certificate: "Certificado de participação (3h)",
     banner: EventBannerImg,
     description:
       "Uma imersão sobre tendências em tecnologia, trajetórias profissionais e como se posicionar para estágios e programas de trainee. Inclui Q&A ao vivo e networking entre estudantes e universidades convidadas.",
@@ -82,7 +80,6 @@ export const studentEventsMock: StudentEvent[] = [
     location: "Auditório Central - Bloco B",
     spots: "60 vagas",
     level: "Para interessados em inovação",
-    certificate: "Certificado de participação (3h)",
     banner: Illustration,
     description:
       "Construa soluções centradas no usuário com exercícios práticos e feedback de especialistas. Ideal para quem quer fortalecer portfólio e soft skills.",
@@ -115,7 +112,6 @@ export const studentEventsMock: StudentEvent[] = [
     location: "Centro de Convenções",
     spots: "200 vagas presenciais",
     level: "Para quem está decidindo curso",
-    certificate: "Credencial de participação",
     banner: EventBannerImg,
     description:
       "Converse com universidades, descubra cursos e tire dúvidas sobre carreira. Espaços temáticos, talks rápidos e plantão de orientação.",
@@ -157,14 +153,13 @@ export const studentEventsMock: StudentEvent[] = [
     location: "Auditório Principal - Torre Norte",
     spots: "150 vagas",
     level: "Foco em tecnologia e infraestrutura",
-    certificate: "Certificado de participação (2h)",
     banner: Illustration,
     description:
       "Descubra como novas tecnologias estão transformando engenharia civil, elétrica e de software. Inclui cases de projetos e trilhas de estudo sugeridas.",
     agenda: [
       { time: "10h00", title: "Panorama das engenharias" },
       { time: "10h30", title: "Case aplicado e discussões" },
-      { time: "11h15", title: "Trilhas e certificados" },
+      { time: "11h15", title: "Trilhas e cases aplicados" },
       { time: "11h45", title: "Q&A" },
     ],
     universities: [
@@ -189,7 +184,6 @@ export const studentEventsMock: StudentEvent[] = [
     location: "Centro Clínico Universitário - Sala 3",
     spots: "90 vagas",
     level: "Indicada para saúde",
-    certificate: "Certificado de participação (2h)",
     banner: EventBannerImg,
     description:
       "Entenda caminhos de especialização, rotina hospitalar e preparação para provas de residência com médicos convidados e espaço para perguntas.",
